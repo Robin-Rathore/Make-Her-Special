@@ -3,9 +3,9 @@ import "./register.scss";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { Navigate } from "react-router-dom";
+import toast, { Toaster } from 'react-hot-toast';
 import { useDispatch } from "react-redux";
 // import { setLogin } from "../../state/state";
-import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { RxCross1 } from "react-icons/rx";
 
@@ -13,7 +13,9 @@ const Register = ({ setAuthPage, setLoginPage }) => {
   const dispatch = useDispatch();
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
   const [password, setPassword] = useState("");
+  const [address, setAddress] = useState("");
 
   const [err, setErr] = useState(null);
   const navigate = useNavigate();
@@ -35,9 +37,24 @@ const Register = ({ setAuthPage, setLoginPage }) => {
   //     console.log(err)})
   // };
 
-  console.log(err);
+  const handleSubmit = async(e)=>{
+    
+    e.preventDefault()
+    try {
+      const {data} = await axios.post("http://localhost:8080/api/v1/user/register",{
+            name,email,phone,password,address
+        })
+      if(data.success){
+        toast.success("Registered Successfully")
+      }
+    } catch (error) {
+      console.log(error)
+    }
+  }
 
   return (
+    <>
+    
     <div className="register">
       <div className="card">
         <div className="left">
@@ -71,56 +88,61 @@ const Register = ({ setAuthPage, setLoginPage }) => {
               Welcome to MakeHerSpecial! It's quick and easy to set up an
               account
             </p>
-            <form>
+            <form noValidate onSubmit={handleSubmit}>
               <div class="form-group">
                 <input
                   type="text"
                   placeholder=""
                   name="name"
+                  value={name}
                   required="required"
                   onChange={(e) => setName(e.target.value)}
                 />
-                <label for="first_name">First Name</label>
+                <label for="first_name"> Name</label>
               </div>
               <div class="form-group">
                 <input
                   type="text"
                   placeholder=""
                   name="name"
-                  required="required"
-                  onChange={(e) => setName(e.target.value)}
-                />
-                <label for="last_name">Last Name</label>
-              </div>
-              <div class="form-group">
-                <input
-                  type="text"
-                  placeholder=""
-                  name="name"
-                  required="required"
-                  onChange={(e) => setName(e.target.value)}
-                />
-                <label for="email">Email</label>
-              </div>
-              <div class="form-group">
-                <input
-                  type="email"
-                  placeholder=""
-                  name="email"
+                  value={email}
                   required="required"
                   onChange={(e) => setEmail(e.target.value)}
                 />
-                <label for="phone">Phone</label>
+                <label for="email">Email</label>
               </div>
               <div class="form-group">
                 <input
                   type="password"
                   placeholder=""
                   name="password"
+                  value={password}
                   required="required"
                   onChange={(e) => setPassword(e.target.value)}
                 />
-                <label for="password">Password</label>
+                <label for="phone">Password</label>
+              </div>
+              <div class="form-group">
+                <input
+                  type="number"
+                  placeholder=""
+                  name="phone"
+                  value={phone}
+                  required="required"
+                  onChange={(e) => setPhone(e.target.value)}
+                />
+                <label for="password">Phone</label>
+              </div>
+              <div class="form-group">
+                <input
+                  type="text"
+                  placeholder=""
+                  name="address"
+                  value={address}
+                  required="required"
+                  onChange={(e) => setAddress(e.target.value)}
+                />
+                <label for="password">Address</label>
               </div>
               {/* <input
               type="text"
@@ -151,6 +173,8 @@ const Register = ({ setAuthPage, setLoginPage }) => {
         </div>
       </div>
     </div>
+    <Toaster/>
+    </>
   );
 };
 

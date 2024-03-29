@@ -10,8 +10,8 @@ import { RxCross1 } from "react-icons/rx";
 const Login = ({ setAuthPage, setLoginPage }) => {
   // toast.configure();
   // const dispatch = useDispatch();
-  // const [phone, setPhone] = useState("");
-  // const [password, setPassword] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   // const navigate = useNavigate();
 
   // const handleSubmit = (e) => {
@@ -38,6 +38,15 @@ const Login = ({ setAuthPage, setLoginPage }) => {
     
   // }
 
+  const handleSubmit = async(e)=>{
+    e.preventDefault();
+    try {
+      console.log(email,password)
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
   return (
     <div className="login">
       <div className="card">
@@ -61,14 +70,14 @@ const Login = ({ setAuthPage, setLoginPage }) => {
         <div className="rightbar">
         <div className="rightbar-form">
           <h1>Login</h1>
-          <form >
+          <form noValidate onSubmit={handleSubmit} >
           <div class="form-group">
                 <input
-                  type="phone"
+                  type="email"
                   placeholder=""
-                  name="phone"
+                  name="email"
                   required="required"
-                  onChange={(e) => setPhone(e.target.value)}
+                  onChange={(e) => setEmail(e.target.value)}
                 />
                 <label for="phone">Phone</label>
               </div>
