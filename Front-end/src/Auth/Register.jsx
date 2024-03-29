@@ -5,7 +5,6 @@ import axios from "axios";
 import { Navigate } from "react-router-dom";
 import toast, { Toaster } from 'react-hot-toast';
 import { useDispatch } from "react-redux";
-// import { setLogin } from "../../state/state";
 import "react-toastify/dist/ReactToastify.css";
 import { RxCross1 } from "react-icons/rx";
 
@@ -19,23 +18,6 @@ const Register = ({ setAuthPage, setLoginPage }) => {
 
   const [err, setErr] = useState(null);
   const navigate = useNavigate();
-
-  // const onSubmit = (e) => {
-  //   e.preventDefault();
-
-  //   axios.post(`http://localhost:3001/register`, {name, email, password})
-  //   .then(result => {
-  //     dispatch(
-  //       setLogin({
-  //         user : result.data,
-  //       })
-  //     );
-  //     navigate("/home");
-  //   })
-  //   .catch(err => {
-  //     toast.error("User Is Already Exist's. Please Login");
-  //     console.log(err)})
-  // };
 
   const handleSubmit = async(e)=>{
     
@@ -144,13 +126,6 @@ const Register = ({ setAuthPage, setLoginPage }) => {
                 />
                 <label for="password">Address</label>
               </div>
-              {/* <input
-              type="text"
-              placeholder="Name"
-              name="name"
-              onChange={handleChange}
-            /> */}
-              {/* {err && err}  */}
               <button type="submit" class="btn">
                 Sign Up
               </button>

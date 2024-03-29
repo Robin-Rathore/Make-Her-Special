@@ -14,9 +14,8 @@ const Features = () => {
       {/* card section */}
       <div className=" flex flex-wrap justify-center gap-5 pt-8">
         {firstTenItems.map((item) => (
-          <div className=" md:w-2/4 lg:w-1/4">
+          <div key={item.id} className=" md:w-2/4 lg:w-1/4">
             <ProductCard
-              key={item.id}
               id={item.id}
               img={item.img}
               name={item.name}

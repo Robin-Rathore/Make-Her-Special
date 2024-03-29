@@ -8,35 +8,8 @@ import toast from "react-hot-toast"
 import { RxCross1 } from "react-icons/rx";
 
 const Login = ({ setAuthPage, setLoginPage }) => {
-  // toast.configure();
-  // const dispatch = useDispatch();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  // const navigate = useNavigate();
-
-  // const handleSubmit = (e) => {
-  //   e.preventDefault();
-  //   axios.post(`http://localhost:3001/login`, {email, password})
-  //   .then(result => {
-  //     if (!result.data) {
-  //       toast.error("Invalid email or password");
-  //     }
-  //     {
-  //       dispatch(
-  //         setLogin({
-  //           user: result.data,
-  //         })
-  //       );
-  //       navigate("/home");
-  //     }
-  //   })
-  //   .catch(err =>{ 
-  //     toast.error("An error occurred while logging in");
-  //     console.log(err);
-  //   });
-  //   toast.success("Ordered Sucessfully, we are directing to the itmes");
-    
-  // }
 
   const handleSubmit = async(e)=>{
     e.preventDefault();
