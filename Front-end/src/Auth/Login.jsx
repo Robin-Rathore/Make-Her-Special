@@ -13,10 +13,16 @@ const Login = ({ setAuthPage, setLoginPage }) => {
 
   const handleSubmit = async(e)=>{
     e.preventDefault();
-    try {
-      console.log(email,password)
-    } catch (error) {
-      console.log(error)
+    try{
+      const {data} = await axios.post("http://localhost:3000/api/v1/user/login",{
+        email, password
+      })
+      if(data.sucess){
+        // console.log(data.message);
+        toast.success("Logedin Successfully");
+      }
+    }catch(error){
+      console.log(error);
     }
   }
 
@@ -52,7 +58,7 @@ const Login = ({ setAuthPage, setLoginPage }) => {
                   required="required"
                   onChange={(e) => setEmail(e.target.value)}
                 />
-                <label for="phone">Phone</label>
+                <label for="phone">Email</label>
               </div>
               <div class="form-group">
                 <input

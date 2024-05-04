@@ -15,6 +15,7 @@ const Register = ({ setAuthPage, setLoginPage }) => {
   const [phone, setPhone] = useState("");
   const [password, setPassword] = useState("");
   const [address, setAddress] = useState("");
+  const role = 0;
 
   const [err, setErr] = useState(null);
   const navigate = useNavigate();
@@ -23,8 +24,8 @@ const Register = ({ setAuthPage, setLoginPage }) => {
     
     e.preventDefault()
     try {
-      const {data} = await axios.post("http://localhost:8080/api/v1/user/register",{
-            name,email,phone,password,address
+      const {data} = await axios.post("http://localhost:3000/api/v1/user/register",{
+            name,email,password,address,phone, role
         })
       if(data.success){
         toast.success("Registered Successfully")
@@ -71,7 +72,7 @@ const Register = ({ setAuthPage, setLoginPage }) => {
               account
             </p>
             <form noValidate onSubmit={handleSubmit}>
-              <div class="form-group">
+              <div className="form-group">
                 <input
                   type="text"
                   placeholder=""
@@ -82,7 +83,7 @@ const Register = ({ setAuthPage, setLoginPage }) => {
                 />
                 <label for="first_name"> Name</label>
               </div>
-              <div class="form-group">
+              <div className="form-group">
                 <input
                   type="text"
                   placeholder=""
@@ -93,7 +94,7 @@ const Register = ({ setAuthPage, setLoginPage }) => {
                 />
                 <label for="email">Email</label>
               </div>
-              <div class="form-group">
+              <div className="form-group">
                 <input
                   type="password"
                   placeholder=""
@@ -104,7 +105,7 @@ const Register = ({ setAuthPage, setLoginPage }) => {
                 />
                 <label for="phone">Password</label>
               </div>
-              <div class="form-group">
+              <div className="form-group">
                 <input
                   type="number"
                   placeholder=""
@@ -115,7 +116,7 @@ const Register = ({ setAuthPage, setLoginPage }) => {
                 />
                 <label for="password">Phone</label>
               </div>
-              <div class="form-group">
+              <div className="form-group">
                 <input
                   type="text"
                   placeholder=""

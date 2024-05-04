@@ -21,7 +21,7 @@ const Slider = () => {
                     <div className="author1">MHS</div>
                     <div className="title1">MAKE HER SPECIAL</div>
                     <div className="topic1">Banarsi Silk Saree</div>
-                    <div className="des1">
+                    <div style={{display:"none"}} className="des1">
                         {/* <!-- lorem 50 --> */}
                         Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ut sequi, rem magnam nesciunt minima placeat, itaque eum neque officiis unde, eaque optio ratione aliquid assumenda facere ab et quasi ducimus aut doloribus non numquam. Explicabo, laboriosam nisi reprehenderit tempora at laborum natus unde. Ut, exercitationem eum aperiam illo illum laudantium?
                     </div>
